@@ -1,24 +1,43 @@
+```dart
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 //
-// XYZ Screen Generator Tool
+// This file is not open source. See license file.
 //
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 import 'package:flutter/material.dart';
-import 'app.dart';
-import 'utils.dart';
+
+import '/all.dart';
+
+part '___SCREEN_FILE_NAME___';
+part '_state.dart';
+part '_logic.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-late final String templateLogic, templateState, tempalteScreen, templateScreenG;
+@GenerateScreenAccess(___GENERATE_SCREEN_ACCESS___)
+class ___CLASS_NAME___ extends MyScreen {
+  //
+  //
+  //
 
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+  ___CLASS_NAME___(MyRouteConfiguration configuration)
+      : super(
+          configuration,___SUPER_CLASS_ARGUMENTS___
+        );
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  templateLogic = await getBodyFromTemplate("assets/_logic.dart.md");
-  templateState = await getBodyFromTemplate("assets/_state.dart.md");
-  tempalteScreen = await getBodyFromTemplate("assets/screen.dart.md");
-  templateScreenG = await getBodyFromTemplate("assets/screen.g.dart.md");
-  runApp(App());
+  //
+  //
+  //
+
+  @override
+  _State createState() => _State();
+
+  //
+  //
+  //
+
+  @override
+  _Logic createLogic(final screen, final state) => _Logic(screen, state);
 }
+```

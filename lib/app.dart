@@ -5,20 +5,16 @@
 // ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
 
 import 'package:flutter/material.dart';
-import 'app.dart';
-import 'utils.dart';
+import 'screen.dart';
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-late final String templateLogic, templateState, tempalteScreen, templateScreenG;
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  templateLogic = await getBodyFromTemplate("assets/_logic.dart.md");
-  templateState = await getBodyFromTemplate("assets/_state.dart.md");
-  tempalteScreen = await getBodyFromTemplate("assets/screen.dart.md");
-  templateScreenG = await getBodyFromTemplate("assets/screen.g.dart.md");
-  runApp(App());
+class App extends StatelessWidget {
+  @override
+  Widget build(_) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(body: Screen()),
+    );
+  }
 }
