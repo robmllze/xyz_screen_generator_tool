@@ -56,7 +56,7 @@ String generateScreenFileBody({
   final isRedirectable = flagOptions[0];
   final bottomNavigationBar = flagOptions[1];
 
-  return replaceExpressions(templateState, {
+  return replaceExpressions(templateScreen, {
     "___SCREEN_FILE_NAME___": "$outputName.dart",
     "___CLASS_NAME___": className,
     "___GENERATE_SCREEN_ACCESS___": "${() {
