@@ -57,24 +57,28 @@ String generateScreenFileBody({
   final bottomNavigationBar = flagOptions[1];
 
   return replaceExpressions(templateScreen, {
-    "___SCREEN_FILE_NAME___": "$outputName.dart",
+    "___SCREEN_G_FILE_NAME___": "$outputName.g.dart",
     "___CLASS_NAME___": className,
     "___GENERATE_SCREEN_ACCESS___": "${() {
       if (isOnlyAccessibleIfSignedIn) return "\n  isOnlyAccessibleIfSignedIn: true,\n";
       if (isOnlyAccessibleIfSignedInAndVerified)
         return "\n  isOnlyAccessibleIfSignedInAndVerified: true,\n";
-      if (isOnlyAccessibleIfSignedOut) return "\n  sOnlyAccessibleIfSignedOut: true,\n";
+      if (isOnlyAccessibleIfSignedOut) return "\n  isOnlyAccessibleIfSignedOut: true,\n";
       if (isAccessibilityAlways) return "";
     }()}${isRedirectable ? "" : "\n  isRedirectable: false,\n"}",
     "___SUPER_CLASS_ARGUMENTS___":
-        "${makeup != "Default" ? "\n          G.theme.myScreen$makeup()," : ""}${title.isNotEmpty ? '\n          title: "$title",\n' : ""}${bottomNavigationBar ? "" : "\n          bottomNavigationBar: null,"}",
+        "${makeup != "Default" ? "\n          G.theme.myScreen$makeup()," : ""}${title.isNotEmpty ? '\n          title: "$title::title".screenTr(),\n' : ""}${bottomNavigationBar ? "" : "\n          bottomNavigationBar: null,"}",
   });
 }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 
-String generateScreenGFileBody() {
-  return replaceExpressions(templateScreenG, {});
+String generateScreenGFileBody({
+  required String outputName,
+}) {
+  return replaceExpressions(templateScreenG, {
+    "___SCREEN_FILE_NAME___": "$outputName.g.dart",
+  });
 }
 
 // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
@@ -123,7 +127,9 @@ Future<void> generateTemplate({
       ),
     );
     await generatedFile.writeAsString(
-      generateScreenGFileBody(),
+      generateScreenGFileBody(
+        outputName: outputName,
+      ),
     );
 
     showDialog(

@@ -45,8 +45,9 @@ class _State extends MyScreenState<___CLASS_NAME___, ___CLASS_NAME___Configurati
           return Text("Count: $value", style: G.theme.textStyles.p1);
         }),
         MyButton(
-          text: "INCREMENT COUNTER",
-          onPressed: this.logic.incrementCounter,
+          makeup: G.theme.buttonDefault(),
+          label: "INCREMENT COUNTER",
+          onTap: this.logic.incrementCounter,
         ),
       ],
     );

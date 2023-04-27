@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 import '/all.dart';
 
-part '___SCREEN_FILE_NAME___';
+part '___SCREEN_G_FILE_NAME___';
 part '_state.dart';
 part '_logic.dart';
 
