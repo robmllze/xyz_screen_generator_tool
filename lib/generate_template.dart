@@ -67,7 +67,7 @@ String generateScreenFileBody({
       if (isAccessibilityAlways) return "";
     }()}${isRedirectable ? "" : "\n  isRedirectable: false,\n"}",
     "___SUPER_CLASS_ARGUMENTS___":
-        "${makeup != "Default" ? "\n          G.theme.myScreen$makeup()," : ""}${title.isNotEmpty ? '\n          title: "$title::title".screenTr(),\n' : ""}${bottomNavigationBar ? "" : "\n          bottomNavigationBar: null,"}",
+        "${makeup != "Default" ? "\n          G.theme.myScreen$makeup()," : ""}${title.isNotEmpty ? '\n          title: "$title:::title".screenTr(),\n' : ""}${bottomNavigationBar ? "" : "\n          bottomNavigationBar: null,"}",
   });
 }
 
